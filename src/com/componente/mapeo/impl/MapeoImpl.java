@@ -14,28 +14,26 @@ import java.util.HashMap;
 import com.componente.mapeo.Mapeo;
 
 public class MapeoImpl implements Mapeo {
-	//Constantes
 	private static final String GET = "get";
 	private static final String SET = "set";
 
-	public static HashMap<String, Object> objetoPersistencia(Object clase) throws Exception{
+	public static HashMap<String, Object> objetoPersistencia(Object clase) throws Exception {
 		HashMap<String, Object> resultado = null;
 
-		try{
+		try {
 			resultado = new HashMap<String, Object>();
 
-			//Obtenemos los metodos que tiene el objeto 
 			Method metodos[] = clase.getClass().getDeclaredMethods();
 			for (int i = 0; i < metodos.length; i++) {
 				Method metodo = metodos[i];
 
-				//Validamos que el metodo que vamos a llamar sea un get
-				if(metodo.getName().startsWith(GET)){
-					Object retorno = metodo.invoke(clase); //Obtenemos el valor que devuelve el metodo get
-					resultado.put(metodo.getName().substring(3).toLowerCase(), retorno); //Colocamos ese valor en el mapa que sera devuelto
+				if (metodo.getName().startsWith(GET)) {
+					Object retorno = metodo.invoke(clase); // Obtenemos el valor que devuelve el metodo get
+					resultado.put(metodo.getName().substring(3).toLowerCase(), retorno); // Colocamos ese valor en el
+																							// mapa que sera devuelto
 				}
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
@@ -43,72 +41,65 @@ public class MapeoImpl implements Mapeo {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static HashMap<String, Object> objetoPersistencia(Object objeto, Class clase) throws Exception{
+	public static HashMap<String, Object> objetoPersistencia(Object objeto, Class clase) throws Exception {
 		HashMap<String, Object> resultado = null;
 
-		try{
+		try {
 			resultado = new HashMap<String, Object>();
 
-			//Obtenemos los metodos que tiene el objeto 
 			Method metodos[] = clase.getDeclaredMethods();
 			for (int i = 0; i < metodos.length; i++) {
 				Method metodo = metodos[i];
 
-				//Validamos que el metodo que vamos a llamar sea un get
-				if(metodo.getName().startsWith(GET)){
-					Object retorno = metodo.invoke(objeto); //Obtenemos el valor que devuelve el metodo get
-					resultado.put(metodo.getName().substring(3).toLowerCase(), retorno); //Colocamos ese valor en el mapa que sera devuelto
+				if (metodo.getName().startsWith(GET)) {
+					Object retorno = metodo.invoke(objeto);
+					resultado.put(metodo.getName().substring(3).toLowerCase(), retorno);
 				}
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
 		return resultado;
 	}
 
-	public static boolean persistenciaObjeto(Object clase, HashMap<String, Object> datos) throws Exception{
+	public static boolean persistenciaObjeto(Object clase, HashMap<String, Object> datos) throws Exception {
 		boolean resultado = true;
 
-		try{
-			//Obtenemos los metodos que tiene el objeto 
+		try {
 			Method metodos[] = clase.getClass().getDeclaredMethods();
-			
+
 			for (int i = 0; i < metodos.length; i++) {
 				Method metodo = metodos[i];
 
-				//Validamos que el metodo que vamos a llamar sea un set
-				if(metodo.getName().startsWith(SET)){
-					//Colocamos el valor que corresponde segun el campo en el respectivo metodo set
-					metodo.invoke(clase, datos.get(metodo.getName().substring(3).toLowerCase())); 
+				if (metodo.getName().startsWith(SET)) {
+					metodo.invoke(clase, datos.get(metodo.getName().substring(3).toLowerCase()));
 				}
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			resultado = false;
 			e.printStackTrace();
 			throw new Exception(e);
 		}
 		return resultado;
 	}
-	
+
 	@SuppressWarnings("rawtypes")
-	public static boolean persistenciaObjeto(Object objeto, Class clase, HashMap<String, Object> datos) throws Exception{
+	public static boolean persistenciaObjeto(Object objeto, Class clase, HashMap<String, Object> datos)
+			throws Exception {
 		boolean resultado = true;
 
-		try{
-			//Obtenemos los metodos que tiene el objeto 
+		try {
 			Method metodos[] = clase.getDeclaredMethods();
-			
+
 			for (int i = 0; i < metodos.length; i++) {
 				Method metodo = metodos[i];
 
-				//Validamos que el metodo que vamos a llamar sea un set
-				if(metodo.getName().startsWith(SET)){
-					//Colocamos el valor que corresponde segun el campo en el respectivo metodo set
-					metodo.invoke(objeto, datos.get(metodo.getName().substring(3).toLowerCase())); 
+				if (metodo.getName().startsWith(SET)) {
+					metodo.invoke(objeto, datos.get(metodo.getName().substring(3).toLowerCase()));
 				}
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			resultado = false;
 			e.printStackTrace();
 			throw new Exception(e);

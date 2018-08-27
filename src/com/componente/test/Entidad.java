@@ -12,11 +12,8 @@ o total sin autorizacion del autor.
 
 package com.componente.test;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
-import com.componente.anotaciones.noCampo;
 import com.componente.persistencia.conexion.impl.ConexionObjImpl;
 import com.componente.persistencia.impl.PersistenciaImpl;
 

@@ -8,11 +8,8 @@
 
 package com.componente.persistencia;
 
-
 public interface Persistencia {
 
 	public abstract boolean cerrarConexion() throws Exception;
-
-
 
 }

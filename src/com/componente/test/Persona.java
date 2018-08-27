@@ -11,14 +11,9 @@ package com.componente.test;
 import java.sql.Date;
 import java.sql.SQLException;
 
-import javax.xml.ws.Action;
-
-import com.componente.anotaciones.ConstantesAnotaciones;
 import com.componente.anotaciones.campo;
 import com.componente.anotaciones.claveForanea;
 import com.componente.anotaciones.clavePrimaria;
-import com.componente.anotaciones.idGenerator;
-import com.componente.anotaciones.secuencia;
 import com.componente.anotaciones.tabla;
 import com.componente.persistencia.conexion.impl.ConexionObjImpl;
 import com.componente.persistencia.impl.PersistenciaImpl;

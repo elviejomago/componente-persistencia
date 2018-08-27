@@ -10,12 +10,9 @@ package com.componente.persistencia.conexion.impl;
 
 public class ConstanteOperadores {
 
-	//Condicionales
 	public static String AND = "AND";
 	public static String OR = "OR";
 	public static String JOIN = "JOIN";
-	
-	//Operadores
 	public static String IGUAL = "=";
 	public static String MAYOR = ">";
 	public static String MAYOR_IGUAL = ">=";
@@ -27,7 +24,6 @@ public class ConstanteOperadores {
 	public static String LIKE = "LIKE";
 	public static String NOT_LIKE = "NOT LIKE";
 	public static String IN = "IN";
-	
 	public static String IS = "IS";
 	public static String IS_NOT = "IS NOT";
 	public static String IS_NULL = "IS NULL";

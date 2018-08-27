@@ -8,7 +8,6 @@
 
 package com.componente.persistencia.conexion;
 
-
 public interface ConexionUtil {
 
 }

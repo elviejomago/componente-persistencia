@@ -38,7 +38,7 @@ public class Util {
 		return result;
 	}
 
-	public static String getNombreTabla(Class clase) throws Exception{
+	public static <T> String getNombreTabla(Class<T> clase) throws Exception{
 		String result = "";
 		try{
 			if(clase.isAnnotationPresent(tabla.class)){
@@ -103,8 +103,7 @@ public class Util {
 		return result;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public static List<String> obtenerCampos(Class clase) throws Exception{
+	public static <T> List<String> obtenerCampos(Class<T> clase) throws Exception{
 		List<String> result=null;
 		try{
 			Field fs[] = clase.getDeclaredFields();
@@ -125,7 +124,7 @@ public class Util {
 					}
 				}
 			}
-			if(result == null)
+			if(result.isEmpty())
 				throw new Exception("ERROR: No se encuentra una clave primaria asignada a la tabla.");
 		}catch(Exception e){
 			e.printStackTrace();
@@ -134,7 +133,7 @@ public class Util {
 		return result;
 	}
 
-	public static boolean exiteCampo(Class clase, String nombreCampo) throws Exception{
+	public static <T> boolean exiteCampo(Class<T> clase, String nombreCampo) throws Exception{
 		boolean result=false;
 		try{
 			Field fs[] = clase.getDeclaredFields();
@@ -206,7 +205,7 @@ public class Util {
 		}
 	}
 
-	public static void asignarValorId(Object objeto, Class clase, Object valorId) throws Exception{
+	public static <T> void asignarValorId(Object objeto, Class<T> clase, Object valorId) throws Exception{
 		try{
 			Field fs[] = clase.getDeclaredFields();
 			Method ms[] = clase.getDeclaredMethods();

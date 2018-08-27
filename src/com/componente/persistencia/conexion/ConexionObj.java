@@ -10,11 +10,12 @@ package com.componente.persistencia.conexion;
 
 import java.util.List;
 
-
-
-public interface ConexionObj{
+public interface ConexionObj {
 	public boolean guardar() throws Exception;
+
 	public boolean eliminar() throws Exception;
+
 	public Object obtener() throws Exception;
+
 	public List<Object> obtenerLista() throws Exception;
 }
